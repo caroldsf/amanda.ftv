@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Presente de Aniversário</title>
+  <style>
+    body {
+      background: linear-gradient(to bottom, #fef9e7, #e3f2fd);
+      font-family: 'Arial', sans-serif;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      margin: 0;
+      text-align: center;
+    }
+
+    .top-message {
+      font-size: 2rem;
+      font-weight: bold;
+      color: #d84315;
+      margin-bottom: 10px;
+    }
+
+    .intro {
+      font-size: 1.3rem;
+      color: #37474f;
+      margin-bottom: 20px;
+    }
+
+    h1 {
+      color: #2c3e50;
+      margin-bottom: 30px;
+      font-size: 2rem;
+    }
+
+    .present-container {
+      position: relative;
+      width: 160px;
+      height: 160px;
+      perspective: 1000px;
+      cursor: pointer;
+    }
+
+    .box {
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(145deg, #f44336, #e53935);
+      border-radius: 12px;
+      position: absolute;
+      top: 0;
+      left: 0;
+      z-index: 1;
+      box-shadow: 0 12px 24px rgba(0,0,0,0.2);
+    }
+
+    .lid {
+      width: 100%;
+      height: 45px;
+      background: linear-gradient(145deg, #c62828, #d32f2f);
+      position: absolute;
+      top: 0;
+      left: 0;
+      z-index: 2;
+      border-top-left-radius: 12px;
+      border-top-right-radius: 12px;
+      transform-origin: top center;
+      transition: transform 0.8s ease-in-out;
+      box-shadow: 0 8px 10px rgba(0, 0, 0, 0.15);
+    }
+
+    .ribbon::before {
+      content: '';
+      position: absolute;
+      background-color: white;
+      width: 18px;
+      height: 100%;
+      left: 50%;
+      top: 0;
+      transform: translateX(-50%);
+      border-radius: 3px;
+      z-index: 4;
+    }
+
+    .coupon {
+      display: none;
+      margin-top: 30px;
+      background-color: #ffeb3b;
+      padding: 20px;
+      border: 2px dashed #f57f17;
+      border-radius: 10px;
+      font-size: 1.2em;
+      text-align: center;
+      animation: fadeIn 1s ease forwards;
+    }
+
+    @keyframes fadeIn {
+      0% { opacity: 0; transform: translateY(20px); }
+      100% { opacity: 1; transform: translateY(0); }
+    }
+
+    .opened .lid {
+      transform: rotateX(-140deg);
+    }
+
+    .opened .coupon {
+      display: block;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="top-message">🎉 Feliz aniversário!</div>
+  <div class="intro">Amanda, você ganhou um presente dos seus amigos do futevôlei!</div>
+  <h1>Abra sua surpresa!</h1>
+
+  <div class="present-container" id="present">
+    <div class="lid"></div>
+    <div class="box"></div>
+    <div class="ribbon"></div>
+  </div>
+
+  <div class="coupon" id="coupon">
+    🎊 Você ganhou uma inscrição para o <strong>Torneio NP de futevôlei!</strong> ⚽<br><br>
+    Aproveite seu presente e boa sorte no torneio! 💪🔥
+  </div>
+
+  <script>
+    const present = document.getElementById('present');
+    const coupon = document.getElementById('coupon');
+
+    present.addEventListener('click', () => {
+      present.classList.add('opened');
+      coupon.style.display = 'block';
+    });
+  </script>
+
+</body>
+</html>
